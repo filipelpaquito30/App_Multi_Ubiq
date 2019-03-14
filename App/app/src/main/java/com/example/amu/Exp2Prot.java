@@ -8,7 +8,8 @@ import android.content.Intent;
 
 public class Exp2Prot extends AppCompatActivity {
     Button backButton;
-
+    Button comecarButton;
+    Button estatisticasButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,5 +22,38 @@ public class Exp2Prot extends AppCompatActivity {
             }
         });
 
+        comecarButton = findViewById(R.id.comecarButton);
+        comecarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openExperience(1);
+            }
+        });
+
+        estatisticasButton = findViewById(R.id.estatisticasButton);
+        estatisticasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openExperience(2);
+            }
+        });
+
+
+
+    }
+
+    public void openExperience(int ExpId){
+        Intent intent = new Intent();
+        switch (ExpId) {
+            case 1:
+                intent = new Intent(this, Exp2_1.class);
+                break;
+            case 2:
+                intent = new Intent(this, Exp2_2.class);
+                break;
+            default:
+                break;
+        }
+        startActivity(intent);
     }
 }
