@@ -30,8 +30,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Especificar Protocolo"
-        android:textSize="24sp"
+        android:scrollbars="vertical"
+        android:text="Protocolo de Utilização da Experiência
+                      1) Mantenha o GPS ligado bem como ligação estável à internet;
+                            "
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,4 +81,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/comecarButton" />
+
 </android.support.constraint.ConstraintLayout>
