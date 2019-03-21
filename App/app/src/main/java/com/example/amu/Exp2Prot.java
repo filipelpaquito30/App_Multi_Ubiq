@@ -2,14 +2,17 @@ package com.example.amu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.TextView;
 
 public class Exp2Prot extends AppCompatActivity {
     Button backButton;
     Button comecarButton;
     Button estatisticasButton;
+    TextView textview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +24,11 @@ public class Exp2Prot extends AppCompatActivity {
                 finish();
             }
         });
+
+        textview = (TextView) findViewById(R.id.protocolo);
+        textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar o local onde tenciona estacionar; \n 3)Quando o automóvel estiver estacionado " +
+                "clique em ”Fim” para terminar a experiência e mostrar resultados."  );
+        textview.setMovementMethod(new ScrollingMovementMethod());
 
         comecarButton = findViewById(R.id.comecarButton);
         comecarButton.setOnClickListener(new View.OnClickListener() {

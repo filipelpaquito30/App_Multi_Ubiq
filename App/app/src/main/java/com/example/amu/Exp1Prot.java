@@ -27,6 +27,8 @@ public class Exp1Prot extends AppCompatActivity {
         });
 
         textview = (TextView) findViewById(R.id.textView);
+        textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar um destino; \n 3) Para  uma  melhor  precisão  dos  resultados  recomendamos  que  efetue  esta  ex" +
+                "periência numa viagem superior a 5 minutos."  );
         textview.setMovementMethod(new ScrollingMovementMethod());
 
 
