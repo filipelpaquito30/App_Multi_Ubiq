@@ -2,19 +2,22 @@ package com.example.amu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.TextView;
 
 public class Exp1Prot extends AppCompatActivity {
     Button backButton;
-    Button startButton;
-    Button statButton;
-
+    Button comecarButton;
+    Button estatisticasButton;
+    TextView textview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exp1_prot);
+
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,16 +26,22 @@ public class Exp1Prot extends AppCompatActivity {
             }
         });
 
-        startButton = findViewById(R.id.buttonStart);
-        startButton.setOnClickListener(new View.OnClickListener() {
+        textview = (TextView) findViewById(R.id.textView);
+        textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar um destino; \n 3) Para  uma  melhor  precisão  dos  resultados  recomendamos  que  efetue  esta  ex" +
+                "periência numa viagem superior a 5 minutos."  );
+        textview.setMovementMethod(new ScrollingMovementMethod());
+
+
+        comecarButton = findViewById(R.id.comecarButton);
+        comecarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            openExperience(1);
+                openExperience(1);
             }
         });
 
-        statButton = findViewById(R.id.statsButton);
-        statButton.setOnClickListener(new View.OnClickListener() {
+        estatisticasButton = findViewById(R.id.estatisticasButton);
+        estatisticasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openExperience(2);
@@ -40,7 +49,8 @@ public class Exp1Prot extends AppCompatActivity {
         });
 
 
-}
+
+    }
 
     public void openExperience(int ExpId){
         Intent intent = new Intent();
@@ -49,7 +59,7 @@ public class Exp1Prot extends AppCompatActivity {
                 intent = new Intent(this, Exp1_1.class);
                 break;
             case 2:
-                intent = new Intent(this, Exp2_2.class);
+                intent = new Intent(this, Exp1_2.class);
                 break;
             default:
                 break;
@@ -57,4 +67,3 @@ public class Exp1Prot extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
