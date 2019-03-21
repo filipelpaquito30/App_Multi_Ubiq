@@ -1,7 +1,10 @@
 package com.example.amu;
 
+import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.os.SystemClock;
@@ -9,8 +12,10 @@ import android.widget.Chronometer;
 
 public class Exp2_1 extends AppCompatActivity {
     Button backButton;
+    int distancia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int distancia = 2;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exp2_1);
         final Chronometer chronometer = (Chronometer)findViewById(R.id.chronometerExample);
@@ -22,6 +27,9 @@ public class Exp2_1 extends AppCompatActivity {
             }
         });
 
+        if (distancia == 2) {
+            chronometer.start();
+        }
         Button buttonStart = (Button)findViewById(R.id.buttonStartChronometer);
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
