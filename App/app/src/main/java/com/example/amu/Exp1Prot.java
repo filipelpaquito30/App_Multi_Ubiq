@@ -8,9 +8,8 @@ import android.content.Intent;
 
 public class Exp1Prot extends AppCompatActivity {
     Button backButton;
-    Button startButton;
-    Button statButton;
-
+    Button comecarButton;
+    Button estatisticasButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,16 +22,16 @@ public class Exp1Prot extends AppCompatActivity {
             }
         });
 
-        startButton = findViewById(R.id.buttonStart);
-        startButton.setOnClickListener(new View.OnClickListener() {
+        comecarButton = findViewById(R.id.comecarButton);
+        comecarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            openExperience(1);
+                openExperience(1);
             }
         });
 
-        statButton = findViewById(R.id.statsButton);
-        statButton.setOnClickListener(new View.OnClickListener() {
+        estatisticasButton = findViewById(R.id.estatisticasButton);
+        estatisticasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openExperience(2);
@@ -40,7 +39,8 @@ public class Exp1Prot extends AppCompatActivity {
         });
 
 
-}
+
+    }
 
     public void openExperience(int ExpId){
         Intent intent = new Intent();
@@ -57,4 +57,3 @@ public class Exp1Prot extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
