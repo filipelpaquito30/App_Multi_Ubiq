@@ -1,65 +1,65 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-xmlns:tools="http://schemas.android.com/tools"
-tools:context=".Exp2_1">
-<ScrollView
-    android:id="@+id/ScrollView1"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="top"
-    android:orientation="vertical">
-    <LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Exp2Prot">
+    <ScrollView
+        android:id="@+id/ScrollView1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:padding="16dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="top"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/estacionamento"
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Estacionamento"
-            android:textAlignment="center"
-            android:textSize="32sp" />
+            android:layout_marginTop="?attr/actionBarSize"
+            android:padding="16dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/protocolo"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Desde ontem a noite a compilação final do programa superou o desempenho de compilação multi-plataforma de forma asincrona."
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/estacionamento"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Estacionamento"
+                android:textAlignment="center"
+                android:textSize="32sp" />
 
-        <Button
-            android:id="@+id/comecarButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:text="Começar"/>
+            <TextView
+                android:id="@+id/protocolo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Desde ontem a noite a compilação final do programa superou o desempenho de compilação multi-plataforma de forma asincrona."
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/estatisticasButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:text="Estatísticas"/>
+            <Button
+                android:id="@+id/iniciarButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="Iniciar"/>
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:text="Back"/>
-    </LinearLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/estatisticasButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="Estatísticas"/>
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="Back"/>
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
 

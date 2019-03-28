@@ -9,17 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Exp2_2" android:screenOrientation="portrait"/>
-        <activity android:name=".Exp2_1" android:screenOrientation="portrait"/>
-        <activity android:name=".Exp1_1" android:screenOrientation="portrait"/>
-        <activity android:name=".Exp1_2" android:screenOrientation="portrait"/>
-        <activity android:name=".Exp2Prot" android:screenOrientation="portrait"/>
-        <activity android:name=".Exp1Prot" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Exp2_0"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Exp2_2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Exp2_1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Exp1_1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Exp1_2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Exp2Prot"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Exp1Prot"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
