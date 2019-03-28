@@ -35,7 +35,7 @@ public class Exp1Prot extends AppCompatActivity {
         textview.setMovementMethod(new ScrollingMovementMethod());
 
 
-        comecarButton = findViewById(R.id.comecarButton);
+        comecarButton = findViewById(R.id.iniciarButton);
         comecarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

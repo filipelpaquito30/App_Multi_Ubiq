@@ -36,12 +36,12 @@
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/comecarButton"
+                android:id="@+id/iniciarButton"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textSize="15sp"
-                android:text="Começar"/>
+                android:text="Iniciar"/>
 
             <Button
                 android:id="@+id/estatisticasButton"
