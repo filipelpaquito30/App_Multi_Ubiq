@@ -16,7 +16,7 @@ public class Exp2Prot extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exp2_prot);
+        setContentView(R.layout.activity_exp_prot);
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,6 +24,9 @@ public class Exp2Prot extends AppCompatActivity {
                 finish();
             }
         });
+
+        textview = (TextView) findViewById(R.id.title);
+        textview.setText("Estacionamento");
 
         textview = (TextView) findViewById(R.id.protocolo);
         textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar o local onde tenciona estacionar; \n 3)Quando o automóvel estiver estacionado " +
