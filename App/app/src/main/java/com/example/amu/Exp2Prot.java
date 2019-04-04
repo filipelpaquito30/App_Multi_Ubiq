@@ -47,7 +47,6 @@ public class Exp2Prot extends AppCompatActivity {
         });
 
 
-
     }
 
     public void openExperience(int ExpId){
