@@ -16,7 +16,7 @@ public class Exp1Prot extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exp1_prot);
+        setContentView(R.layout.activity_exp_prot);
 
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -26,13 +26,16 @@ public class Exp1Prot extends AppCompatActivity {
             }
         });
 
-        textview = (TextView) findViewById(R.id.textView);
+        textview = (TextView) findViewById(R.id.title);
+        textview.setText("Perfil de Condução");
+
+        textview = (TextView) findViewById(R.id.protocolo);
         textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar um destino; \n 3) Para  uma  melhor  precisão  dos  resultados  recomendamos  que  efetue  esta  ex" +
-                "periência numa viagem superior a 5 minutos."  );
+                "periência numa viagem superior a 5 minutos.");
         textview.setMovementMethod(new ScrollingMovementMethod());
 
 
-        comecarButton = findViewById(R.id.comecarButton);
+        comecarButton = findViewById(R.id.iniciarButton);
         comecarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
