@@ -16,7 +16,7 @@ public class Exp2_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exp2_2);
-        backButton = findViewById(R.id.backButton);
+        backButton = findViewById(R.id.buttonsair);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
