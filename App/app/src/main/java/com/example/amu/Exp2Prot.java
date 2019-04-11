@@ -56,7 +56,7 @@ public class Exp2Prot extends AppCompatActivity {
         Intent intent = new Intent();
         switch (ExpId) {
             case 1:
-                intent = new Intent(this, Exp2_0.class);
+                intent = new Intent(this, MapsActivity.class);
                 break;
             case 2:
                 intent = new Intent(this, Exp2_2.class);
