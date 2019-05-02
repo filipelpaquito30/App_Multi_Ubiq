@@ -56,8 +56,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="15sp"
-                android:text="Back"/>
+                android:text="Voltar"
+                android:textSize="15sp" />
         </LinearLayout>
     </ScrollView>
 

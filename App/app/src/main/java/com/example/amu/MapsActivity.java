@@ -38,6 +38,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.Button;
 
 public class MapsActivity extends AppCompatActivity
         implements OnMyLocationButtonClickListener,
@@ -53,6 +54,8 @@ public class MapsActivity extends AppCompatActivity
 
     private EditText mSearchText;
 
+    Button backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -63,6 +66,13 @@ public class MapsActivity extends AppCompatActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        backButton = findViewById(R.id.buttonsair);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

@@ -57,14 +57,19 @@
         android:layout_below="@+id/map"
         android:text="Para começar a experiência, escolha o seu destino"
         android:textAlignment="center"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_below="@+id/textview4"
-        android:text="Back" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="281dp"
+        android:layout_marginEnd="318dp"
+        android:layout_marginBottom="7dp"
+        android:text="Voltar" />
 
 </RelativeLayout>
