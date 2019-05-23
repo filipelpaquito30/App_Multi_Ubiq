@@ -105,13 +105,40 @@ public class MapsActivity extends AppCompatActivity
 
 
     @Override
-    public void onMapReady(GoogleMap map)
+    public void onMapReady(final GoogleMap map)
     {
         mMap = map;
 
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         enableMyLocation();
+
+        // Setting a click event handler for the map
+        map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+                // Creating a marker
+                MarkerOptions markerOptions = new MarkerOptions();
+
+                // Setting the position for the marker
+                markerOptions.position(latLng);
+
+                // Setting the title for the marker.
+                // This will be displayed on taping the marker
+                markerOptions.title("Destino: " + latLng.latitude + " : " + latLng.longitude);
+
+                // Clears the previously touched position
+                map.clear();
+
+                // Animating to the touched position
+                map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                // Placing a marker on the touched position
+                map.addMarker(markerOptions);
+            }
+        });
 
         init();
 
