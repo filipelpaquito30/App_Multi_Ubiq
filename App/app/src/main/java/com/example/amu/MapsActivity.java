@@ -1,6 +1,7 @@
 package com.example.amu;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -54,7 +55,11 @@ public class MapsActivity extends AppCompatActivity
 
     private EditText mSearchText;
 
+    public static LatLng location;
+
     Button backButton;
+
+    Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -71,6 +76,14 @@ public class MapsActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        nextButton = findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(this, PostMap.class);
             }
         });
 
@@ -137,11 +150,18 @@ public class MapsActivity extends AppCompatActivity
 
                 // Placing a marker on the touched position
                 map.addMarker(markerOptions);
+
+                location = latLng;
+
             }
         });
 
         init();
 
+    }
+
+    public static LatLng getCoord() {
+        return location;
     }
 
     private void enableMyLocation() {
