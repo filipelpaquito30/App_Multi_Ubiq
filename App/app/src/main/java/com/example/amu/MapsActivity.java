@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -31,6 +32,8 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -38,6 +41,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import android.widget.Button;
+
+import static java.lang.String.valueOf;
 
 public class MapsActivity extends AppCompatActivity
         implements OnMyLocationButtonClickListener,
@@ -56,14 +61,20 @@ public class MapsActivity extends AppCompatActivity
 
     private LocationManager locationManager;
 
+    private float[] dist = new float[1];
+
+    private boolean isBet;
+
     private LocationListener locListener;
 
     public static LatLng destLocation;
 
     TextView tv;
+    TextView tv2;
+    TextView tv3;
 
-    public static double currLat;
-    public static double currLong;
+    public static double currLat = 0;
+    public static double currLong = 0;
 
     Button backButton;
 
@@ -77,6 +88,9 @@ public class MapsActivity extends AppCompatActivity
         mSearchText = (EditText) findViewById(R.id.input_search);
 
         tv = (TextView) findViewById(R.id.coord);
+        tv2 = (TextView) findViewById(R.id.isIn);
+        tv3 = (TextView) findViewById(R.id.speed);
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -109,6 +123,16 @@ public class MapsActivity extends AppCompatActivity
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 
+    }
+
+    public boolean isDistanceBetween() {
+
+        Location.distanceBetween(currLat,currLong,destLocation.latitude,destLocation.longitude,dist);
+
+        if(dist[0] > 1000){
+            return false;
+        }
+        return true;
     }
 
     /*
@@ -190,14 +214,6 @@ public class MapsActivity extends AppCompatActivity
 
         BackgroundLocationService();
 
-    }
-
-    public static double getDestLat() {
-        return destLocation.latitude;
-    }
-
-    public static double getDestLon() {
-        return destLocation.longitude;
     }
 
     private void enableMyLocation() {
@@ -292,6 +308,19 @@ public class MapsActivity extends AppCompatActivity
         currLat = latitude;
         currLong = longitude;
         tv.setText(currLat + "," + currLong);
+        tv3.setText(valueOf(location.getSpeed()));
+
+        if (destLocation != null) {
+            isBet = isDistanceBetween();
+            if (isBet == true) {
+                tv2.setText("Já tás perto, toca a estacionar!");
+            }else{
+                tv2.setText("Ainda estás longe, anda rápido!");
+            }
+        }
+
+        Circle circle = mMap.addCircle(new CircleOptions().center(new LatLng(currLat, currLong)).radius(1000).strokeColor(Color.BLUE));
+        circle.setVisible(true);
     }
 
     @Override
