@@ -4,6 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/coord"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/map"
+        android:layout_marginTop="94dp"
+        android:text="Cenas"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"

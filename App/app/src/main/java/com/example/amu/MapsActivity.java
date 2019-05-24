@@ -1,12 +1,15 @@
 package com.example.amu;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
-import android.nfc.Tag;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
@@ -17,14 +20,9 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
@@ -45,7 +43,8 @@ public class MapsActivity extends AppCompatActivity
         implements OnMyLocationButtonClickListener,
             OnMyLocationClickListener,
             OnMapReadyCallback,
-            ActivityCompat.OnRequestPermissionsResultCallback
+            ActivityCompat.OnRequestPermissionsResultCallback,
+            LocationListener
 {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -55,7 +54,16 @@ public class MapsActivity extends AppCompatActivity
 
     private EditText mSearchText;
 
-    public static LatLng location;
+    private LocationManager locationManager;
+
+    private LocationListener locListener;
+
+    public static LatLng destLocation;
+
+    TextView tv;
+
+    public static double currLat;
+    public static double currLong;
 
     Button backButton;
 
@@ -68,9 +76,12 @@ public class MapsActivity extends AppCompatActivity
         setContentView(R.layout.activity_maps2);
         mSearchText = (EditText) findViewById(R.id.input_search);
 
+        tv = (TextView) findViewById(R.id.coord);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,11 +94,28 @@ public class MapsActivity extends AppCompatActivity
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, PostMap.class);
+                finish();
             }
         });
 
     }
+
+    public void BackgroundLocationService() {
+
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+        Criteria crt = new Criteria();
+        crt.setAccuracy(Criteria.ACCURACY_FINE);
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+
+    }
+
+    /*
+    private void change(View view) {
+        Intent intent = new Intent(this, PostMap.class);
+        startActivity(intent);
+    }*/
 
 
     private void init()
@@ -109,10 +137,12 @@ public class MapsActivity extends AppCompatActivity
         });
     }
 
+
+
     private void goToLocationZoom(double lat, double lng, float zoom)
     {
         LatLng ll = new LatLng(lat,lng);
-        CameraUpdate update =   CameraUpdateFactory.newLatLngZoom(ll, zoom);
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
         mMap.moveCamera(update);
     }
 
@@ -151,17 +181,23 @@ public class MapsActivity extends AppCompatActivity
                 // Placing a marker on the touched position
                 map.addMarker(markerOptions);
 
-                location = latLng;
+                destLocation = latLng;
 
             }
         });
 
         init();
 
+        BackgroundLocationService();
+
     }
 
-    public static LatLng getCoord() {
-        return location;
+    public static double getDestLat() {
+        return destLocation.latitude;
+    }
+
+    public static double getDestLon() {
+        return destLocation.longitude;
     }
 
     private void enableMyLocation() {
@@ -247,6 +283,30 @@ public class MapsActivity extends AppCompatActivity
 
             Log.d("MapActivity", "geoLocate: found a location: " + address.toString());
         }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        double longitude = location.getLongitude();
+        double latitude = location.getLatitude();
+        currLat = latitude;
+        currLong = longitude;
+        tv.setText(currLat + "," + currLong);
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
     }
 }
 
