@@ -16,7 +16,7 @@ public class Exp2Prot extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exp_prot);
+        setContentView(R.layout.activity_exp_prot2);
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,11 +26,11 @@ public class Exp2Prot extends AppCompatActivity {
         });
 
         textview = (TextView) findViewById(R.id.title);
-        textview.setText("Estacionamento");
+        textview.setText("Perfil de Condução");
 
         textview = (TextView) findViewById(R.id.protocolo);
-        textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar o local onde tenciona estacionar; \n 3)Quando o automóvel estiver estacionado " +
-                "clique em ”Fim” para terminar a experiência e mostrar resultados."  );
+        textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar um destino; \n 3) Para  uma  melhor  precisão  dos  resultados  recomendamos  que  efetue  esta  ex" +
+                "periência numa viagem superior a 5 minutos.");
         textview.setMovementMethod(new ScrollingMovementMethod());
 
         iniciarButton = findViewById(R.id.iniciarButton);
@@ -56,7 +56,7 @@ public class Exp2Prot extends AppCompatActivity {
         Intent intent = new Intent();
         switch (ExpId) {
             case 1:
-                intent = new Intent(this, MapsActivity.class);
+                intent = new Intent(this, MapsActivity2.class);
                 break;
             case 2:
                 intent = new Intent(this, Exp2_2.class);

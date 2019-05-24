@@ -27,11 +27,13 @@ public class Exp1Prot extends AppCompatActivity {
         });
 
         textview = (TextView) findViewById(R.id.title);
-        textview.setText("Perfil de Condução");
+        textview.setText("Estacionamento");
+
 
         textview = (TextView) findViewById(R.id.protocolo);
-        textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar um destino; \n 3) Para  uma  melhor  precisão  dos  resultados  recomendamos  que  efetue  esta  ex" +
-                "periência numa viagem superior a 5 minutos.");
+        textview.setText("1)Mantenha o GPS ligado bem como uma ligação estável à internet;\n 2) Após clicar em ”Iniciar” será lhe pedido para seleccionar o local onde tenciona estacionar; \n 3)Quando o automóvel estiver estacionado " +
+                "clique em ”Fim” para terminar a experiência e mostrar resultados."  );
+
         textview.setMovementMethod(new ScrollingMovementMethod());
 
 
