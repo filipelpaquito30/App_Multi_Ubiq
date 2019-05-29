@@ -93,7 +93,7 @@ public class MapsActivity2 extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_maps2);
         mSearchText = (EditText) findViewById(R.id.input_search);
 
         tv3 = (TextView) findViewById(R.id.speed);

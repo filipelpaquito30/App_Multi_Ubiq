@@ -87,6 +87,8 @@ public class MapsActivity extends AppCompatActivity
 
     long lastTime;
 
+    String currentTime = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -328,17 +330,20 @@ public class MapsActivity extends AppCompatActivity
             isBet = isDistanceBetween();
             if (isBet == true && t == 1) {
                 startTime = SystemClock.elapsedRealtime();
-               // chronometer.start();
+                // chronometer.start();
                 t = 0;
             }
-            String currentTime = "";
-            long ct = SystemClock.elapsedRealtime();
+            long ct = SystemClock.elapsedRealtime() - startTime;
+            /*
             currentTime.format("%d min, %d sec",
                     TimeUnit.MILLISECONDS.toMinutes(ct),
                     TimeUnit.MILLISECONDS.toSeconds(ct) -
                             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(ct))
-            );
-            tv.setText(currentTime);
+            );*/
+            int seconds = (int) (ct / 1000) % 60 ;
+            int minutes = (int) ((ct / (1000*60)) % 60);
+            int hours   = (int) ((ct / (1000*60*60)) % 24);
+            tv.setText(hours + ":" + minutes + ":" + seconds);
         }
 
     }

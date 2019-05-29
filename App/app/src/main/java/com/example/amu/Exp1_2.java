@@ -36,12 +36,17 @@ public class Exp1_2 extends AppCompatActivity {
         long time = (long)intent.getSerializableExtra("time");
         textview = (TextView) findViewById(R.id.textView);
         String date = "";
+        /*
         date.format("%d min, %d sec",
                 TimeUnit.MILLISECONDS.toMinutes(time),
                 TimeUnit.MILLISECONDS.toSeconds(time) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time))
-        );
-        textview.setText("Demoras-te: " + date + " a estacionar");
+        );*/
+        int seconds = (int) (time / 1000) % 60 ;
+        int minutes = (int) ((time / (1000*60)) % 60);
+        int hours   = (int) ((time / (1000*60*60)) % 24);
+        textview.setText(hours + ":" + minutes + ":" + seconds);
+        //textview.setText("Demoras-te: " + date + " a estacionar");
 
         //showGraph();
 
