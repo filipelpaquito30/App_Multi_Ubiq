@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class Exp1Prot extends AppCompatActivity {
     Button backButton;
     Button comecarButton;
-    Button estatisticasButton;
+    //Button estatisticasButton;
     TextView textview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +45,13 @@ public class Exp1Prot extends AppCompatActivity {
             }
         });
 
-        estatisticasButton = findViewById(R.id.estatisticasButton);
+        /*estatisticasButton = findViewById(R.id.estatisticasButton);
         estatisticasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openExperience(2);
             }
-        });
+        });*/
 
 
 
