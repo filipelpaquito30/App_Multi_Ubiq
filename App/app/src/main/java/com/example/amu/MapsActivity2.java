@@ -12,10 +12,12 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -39,7 +41,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import android.widget.Button;
 
@@ -69,12 +75,15 @@ public class MapsActivity2 extends AppCompatActivity
 
     public static LatLng destLocation;
 
+    public ArrayMap<String,Float> list = new ArrayMap<String, Float>();
+
     TextView tv;
     TextView tv2;
     TextView tv3;
 
     public static double currLat = 0;
     public static double currLong = 0;
+    private int k;
 
     Button backButton;
 
@@ -328,7 +337,12 @@ public class MapsActivity2 extends AppCompatActivity
                 tv2.setText("Ainda estás longe, anda rápido!");
             }
         }
-
+        if (k < 15) {
+            k++;
+        } else {
+            list.put(Calendar.getInstance().getTime().toString(),location.getSpeed());
+            k=0;
+        }
         //Circle circle = mMap.addCircle(new CircleOptions().center(new LatLng(currLat, currLong)).radius(1000).strokeColor(Color.BLUE));
         //circle.setVisible(true);
     }
