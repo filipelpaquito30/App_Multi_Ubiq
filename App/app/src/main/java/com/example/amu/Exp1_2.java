@@ -1,5 +1,6 @@
 package com.example.amu;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -11,6 +12,8 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import org.w3c.dom.Text;
+
+import static java.lang.String.valueOf;
 
 public class Exp1_2 extends AppCompatActivity {
     Button backButton;
@@ -26,9 +29,15 @@ public class Exp1_2 extends AppCompatActivity {
                 finish();
             }
         });
-        showGraph();
+        Intent intent = getIntent();
+        long time = (long)intent.getSerializableExtra("time");
+        textview = (TextView) findViewById(R.id.textView);
+        textview.setText("Demoras-te: " + valueOf(time) + "a estacionar");
+
+        //showGraph();
 
     }
+    /*
     public void showGraph(){
         GraphView graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
@@ -39,6 +48,6 @@ public class Exp1_2 extends AppCompatActivity {
                 new DataPoint(4, 6)
         });
         graph.addSeries(series);
-    }
+    }*/
 }
 

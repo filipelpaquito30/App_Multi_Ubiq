@@ -10,6 +10,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
@@ -72,13 +73,17 @@ public class MapsActivity extends AppCompatActivity
     public static double currLat = 0;
     public static double currLong = 0;
 
-    public int t = 0;
+    public int t = 1;
 
     final Chronometer chronometer = (Chronometer)findViewById(R.id.chronometerExample);
 
     Button backButton;
 
     Button nextButton;
+
+    long startTime;
+
+    long lastTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -104,6 +109,7 @@ public class MapsActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 chronometer.stop();
+                lastTime = SystemClock.elapsedRealtime()-startTime;
                 openExperience(1);
             }
         });
@@ -318,6 +324,7 @@ public class MapsActivity extends AppCompatActivity
         if (destLocation != null) {
             isBet = isDistanceBetween();
             if (isBet == true && t == 1) {
+                startTime = SystemClock.elapsedRealtime();
                 chronometer.start();
                 t = 0;
             }
@@ -345,6 +352,7 @@ public class MapsActivity extends AppCompatActivity
         switch (ExpId) {
             case 1:
                 intent = new Intent(this, Exp1_2.class);
+                intent.putExtra("time",lastTime);
                 break;
             default:
                 break;
