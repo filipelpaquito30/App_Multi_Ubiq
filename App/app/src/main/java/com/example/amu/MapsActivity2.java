@@ -43,6 +43,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -75,7 +76,10 @@ public class MapsActivity2 extends AppCompatActivity
 
     public static LatLng destLocation;
 
-    public ArrayMap<String,Float> list = new ArrayMap<String, Float>();
+    public ArrayList<Date> timeList = new ArrayList<Date>();
+
+    public ArrayList<Float> velList = new ArrayList<Float>();
+
 
     TextView tv;
     TextView tv2;
@@ -340,7 +344,8 @@ public class MapsActivity2 extends AppCompatActivity
         if (k < 15) {
             k++;
         } else {
-            list.put(Calendar.getInstance().getTime().toString(),location.getSpeed());
+            timeList.add(Calendar.getInstance().getTime());
+            velList.add(location.getSpeed());
             k=0;
         }
         //Circle circle = mMap.addCircle(new CircleOptions().center(new LatLng(currLat, currLong)).radius(1000).strokeColor(Color.BLUE));
@@ -367,6 +372,8 @@ public class MapsActivity2 extends AppCompatActivity
         switch (ExpId) {
             case 1:
                 intent = new Intent(this, Exp2_2.class);
+                intent.putExtra("timelist", timeList);
+                intent.putExtra("vellist", velList);
                 break;
             default:
                 break;
