@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -16,6 +17,7 @@ import java.util.Date;
 
 public class Exp2_2 extends AppCompatActivity {
     Button backButton;
+    TextView stats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class Exp2_2 extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList<Date> timeList = (ArrayList<Date>)intent.getSerializableExtra("timelist");
         ArrayList<Float> velList = (ArrayList<Float>)intent.getSerializableExtra("vellist");
+        getStats(velList);
         showGraph(timeList,velList);
 
     }
@@ -44,5 +47,23 @@ public class Exp2_2 extends AppCompatActivity {
         }
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(data);
         graph.addSeries(series);
+    }
+
+    public void getStats(ArrayList<Float> array){
+        float min = array.get(0);
+        float max = array.get(0);
+        float avg = 0;
+        for(float x : array){
+            if(x < min)
+                min=x;
+            if(x > max)
+                max=x;
+            avg+=x;
+        }
+        avg=avg/array.size();
+        stats = (TextView) findViewById(R.id.statsText);
+        stats.setText("Velocidade Mínima: " + min + "\n" + "Velocidade Máxima: " + max + "\n" + "Velocidade Média: " + avg);
+
+
     }
 }
