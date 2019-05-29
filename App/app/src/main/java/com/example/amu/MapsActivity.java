@@ -96,6 +96,7 @@ public class MapsActivity extends AppCompatActivity
         setContentView(R.layout.activity_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
         tv = (TextView) findViewById(R.id.currentTime);
+        tv2 = (TextView) findViewById(R.id.gpsState);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -325,6 +326,12 @@ public class MapsActivity extends AppCompatActivity
         double latitude = location.getLatitude();
         currLat = latitude;
         currLong = longitude;
+
+        if (currLat != 0) {
+            tv2.setText("GPS: Ligado");
+        } else {
+            tv2.setText("GPS: A ligar, aguarde");
+        }
 
         if (destLocation != null) {
             isBet = isDistanceBetween();

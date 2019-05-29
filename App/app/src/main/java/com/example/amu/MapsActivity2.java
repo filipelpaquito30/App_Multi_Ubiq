@@ -81,6 +81,8 @@ public class MapsActivity2 extends AppCompatActivity
     TextView tv;
     TextView tv2;
     TextView tv3;
+    TextView tv4;
+    TextView tv5;
 
     public static double currLat = 0;
     public static double currLong = 0;
@@ -97,6 +99,7 @@ public class MapsActivity2 extends AppCompatActivity
         mSearchText = (EditText) findViewById(R.id.input_search);
 
         tv3 = (TextView) findViewById(R.id.speed);
+        tv2 = (TextView) findViewById(R.id.gpsState);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -319,6 +322,12 @@ public class MapsActivity2 extends AppCompatActivity
         currLat = latitude;
         currLong = longitude;
 
+        if (currLat != 0) {
+            tv2.setText("GPS: Ligado");
+        } else {
+            tv2.setText("GPS: A ligar, aguarde");
+        }
+
         if (location.getSpeed() >= 33) {
             tv3.setText(valueOf(location.getSpeed()));
             tv3.setBackgroundColor(RED);
@@ -329,13 +338,12 @@ public class MapsActivity2 extends AppCompatActivity
             tv3.setBackgroundColor(GREEN);
             tv3.setText(valueOf(location.getSpeed()));
         }
-        if (k < 15) {
-            k++;
-        } else {
-            timeList.add(Calendar.getInstance().getTime());
-            velList.add(location.getSpeed());
-            k=0;
-        }
+
+        timeList.add(Calendar.getInstance().getTime());
+        velList.add(location.getSpeed());
+
+        tv4.setText(valueOf(location.getSpeed()));
+        tv5.setText(Calendar.getInstance().getTime().toString());
     }
 
     @Override
