@@ -4,36 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/speed"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/map"
-        android:layout_marginTop="238dp"
-        android:text="Shits"
-        android:textAlignment="center"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/isIn"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/map"
-        android:layout_marginTop="169dp"
-        android:text="Coisas"
-        android:textAlignment="center"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/coord"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/map"
-        android:layout_marginTop="94dp"
-        android:text="Cenas"
-        android:textAlignment="center"
-        android:textSize="20sp" />
-
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
@@ -115,5 +85,16 @@
         android:layout_marginEnd="297dp"
         android:layout_marginBottom="21dp"
         android:text="Voltar" />
+
+    <Chronometer
+        android:id="@+id/chronometerExample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="154dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:textSize="60sp" />
 
 </RelativeLayout>

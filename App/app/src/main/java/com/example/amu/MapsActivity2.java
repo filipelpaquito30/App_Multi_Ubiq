@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -12,7 +11,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -34,22 +32,21 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import android.widget.Button;
 
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.RED;
+import static android.graphics.Color.WHITE;
+import static android.graphics.Color.YELLOW;
 import static java.lang.String.valueOf;
 
 public class MapsActivity2 extends AppCompatActivity
@@ -99,10 +96,7 @@ public class MapsActivity2 extends AppCompatActivity
         setContentView(R.layout.activity_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
 
-        tv = (TextView) findViewById(R.id.coord);
-        tv2 = (TextView) findViewById(R.id.isIn);
         tv3 = (TextView) findViewById(R.id.speed);
-
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -157,12 +151,6 @@ public class MapsActivity2 extends AppCompatActivity
         }
         return true;
     }
-
-    /*
-    private void change(View view) {
-        Intent intent = new Intent(this, PostMap.class);
-        startActivity(intent);
-    }*/
 
 
     private void init()
@@ -330,16 +318,16 @@ public class MapsActivity2 extends AppCompatActivity
         double latitude = location.getLatitude();
         currLat = latitude;
         currLong = longitude;
-        tv.setText(currLat + "," + currLong);
-        tv3.setText(valueOf(location.getSpeed()));
 
-        if (destLocation != null) {
-            isBet = isDistanceBetween();
-            if (isBet == true) {
-                tv2.setText("Já tás perto, toca a estacionar!");
-            }else{
-                tv2.setText("Ainda estás longe, anda rápido!");
-            }
+        if (location.getSpeed() >= 33) {
+            tv3.setText(valueOf(location.getSpeed()));
+            tv3.setBackgroundColor(RED);
+        } else if (location.getSpeed() >= 30.5 && location.getSpeed() < 33){
+            tv3.setBackgroundColor(YELLOW);
+            tv3.setText(valueOf(location.getSpeed()));
+        } else if (location.getSpeed() < 30.5){
+            tv3.setBackgroundColor(GREEN);
+            tv3.setText(valueOf(location.getSpeed()));
         }
         if (k < 15) {
             k++;
@@ -348,8 +336,6 @@ public class MapsActivity2 extends AppCompatActivity
             velList.add(location.getSpeed());
             k=0;
         }
-        //Circle circle = mMap.addCircle(new CircleOptions().center(new LatLng(currLat, currLong)).radius(1000).strokeColor(Color.BLUE));
-        //circle.setVisible(true);
     }
 
     @Override
@@ -381,4 +367,3 @@ public class MapsActivity2 extends AppCompatActivity
         startActivity(intent);
     }
 }
-
