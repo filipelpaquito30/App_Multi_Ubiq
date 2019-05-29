@@ -62,8 +62,13 @@ public class Exp2_2 extends AppCompatActivity {
         }
         avg=avg/array.size();
         stats = (TextView) findViewById(R.id.statsText);
-        stats.setText("Velocidade Mínima: " + min + "\n" + "Velocidade Máxima: " + max + "\n" + "Velocidade Média: " + avg);
+        stats.setText("Velocidade Mínima: " + mps_to_kmph(min) + "\n" + "Velocidade Máxima: " + mps_to_kmph(max) + "\n" + "Velocidade Média: " + mps_to_kmph(avg));
 
 
+    }
+
+    static int mps_to_kmph(float mps)
+    {
+        return(int) (3.6 * mps);
     }
 }
