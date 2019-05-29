@@ -39,6 +39,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import android.widget.Button;
 
 
@@ -75,7 +77,7 @@ public class MapsActivity extends AppCompatActivity
 
     public int t = 1;
 
-    final Chronometer chronometer = (Chronometer)findViewById(R.id.chronometerExample);
+    //final Chronometer chronometer = (Chronometer)findViewById(R.id.chronometerExample);
 
     Button backButton;
 
@@ -91,6 +93,7 @@ public class MapsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
+        tv = (TextView) findViewById(R.id.currentTime);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -108,7 +111,7 @@ public class MapsActivity extends AppCompatActivity
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chronometer.stop();
+                //chronometer.stop();
                 lastTime = SystemClock.elapsedRealtime()-startTime;
                 openExperience(1);
             }
@@ -325,9 +328,17 @@ public class MapsActivity extends AppCompatActivity
             isBet = isDistanceBetween();
             if (isBet == true && t == 1) {
                 startTime = SystemClock.elapsedRealtime();
-                chronometer.start();
+               // chronometer.start();
                 t = 0;
             }
+            String currentTime = "";
+            long ct = SystemClock.elapsedRealtime();
+            currentTime.format("%d min, %d sec",
+                    TimeUnit.MILLISECONDS.toMinutes(ct),
+                    TimeUnit.MILLISECONDS.toSeconds(ct) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(ct))
+            );
+            tv.setText(currentTime);
         }
 
     }

@@ -13,6 +13,9 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import org.w3c.dom.Text;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 import static java.lang.String.valueOf;
 
 public class Exp1_2 extends AppCompatActivity {
@@ -32,7 +35,13 @@ public class Exp1_2 extends AppCompatActivity {
         Intent intent = getIntent();
         long time = (long)intent.getSerializableExtra("time");
         textview = (TextView) findViewById(R.id.textView);
-        textview.setText("Demoras-te: " + valueOf(time) + "a estacionar");
+        String date = "";
+        date.format("%d min, %d sec",
+                TimeUnit.MILLISECONDS.toMinutes(time),
+                TimeUnit.MILLISECONDS.toSeconds(time) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time))
+        );
+        textview.setText("Demoras-te: " + date + " a estacionar");
 
         //showGraph();
 
